@@ -1,4 +1,4 @@
-# Whisper Audio Transcriber
+# Audio Transcriber
 
 This is a Flask web app that uses OpenAI's Whisper to transcribe uploaded audio files into text with timestamps.
 
