@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whisper Audio Transcriber</title>
+</head>
+<body>
+  <h1>Upload Audio File</h1>
+  <input type="file" id="audio" />
+  <button onclick="upload()">Transcribe</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function upload() {
+      const fileInput = document.getElementById("audio");
+      const formData = new FormData();
+      formData.append("audio", fileInput.files[0]);
+
+      const res = await fetch("/transcribe", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      document.getElementById("result").innerText = data.transcription.join("\n");
+    }
+  </script>
+</body>
+</html>
